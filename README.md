@@ -7,7 +7,7 @@ nhóm BIG-DT-HK241
 
 go to 
 [http://localhost:8080/ems/](http://localhost:8080/ems/)
-
+[http://localhost:8080/ems/index.jsp](http://localhost:8080/ems/index.jsp)
 
 | Column    | Column      | Column            | 
 |-----------|-------------|-------------------|
