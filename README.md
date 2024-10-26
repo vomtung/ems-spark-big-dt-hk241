@@ -16,3 +16,8 @@ table ems_master
 | ----------- | --------------                         | ------------------- |
 | INT         | VARCHAR(5000)                          | DECIMAL             | 
 |-------------| -------------------------------------- |---------------------|
+
+# table structure
+
+![Example Image](images/table_structure.png)
+
