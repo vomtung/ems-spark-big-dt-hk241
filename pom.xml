@@ -48,8 +48,30 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
   <build>
-    <finalName>ems-spark-big-dt-hk241</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.3.1</version>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>11.0.24</version> <!-- Kiểm tra để sử dụng phiên bản mới nhất -->
+        <configuration>
+          <webApp>
+            <contextPath>/ems</contextPath> <!-- Đường dẫn ứng dụng -->
+          </webApp>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>
