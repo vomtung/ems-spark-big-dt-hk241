@@ -1,4 +1,4 @@
-nhóm BIG-DT-HK241
+# nhóm BIG-DT-HK241
 
 1. install java11
 2. install maven, install mysql
@@ -8,6 +8,8 @@ nhóm BIG-DT-HK241
 go to 
 [http://localhost:8080/ems/](http://localhost:8080/ems/)
 [http://localhost:8080/ems/index.jsp](http://localhost:8080/ems/index.jsp)
+# table structure
+
 table ems_master
 
 | Column      | Column                                 | Column              | 
@@ -17,7 +19,7 @@ table ems_master
 | INT         | VARCHAR(5000)                          | DECIMAL             | 
 |-------------| -------------------------------------- |---------------------|
 
-# table structure
+
 
 ![Example Image](images/table_structure.png)
 
