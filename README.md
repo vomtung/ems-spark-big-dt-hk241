@@ -1,8 +1,7 @@
 # nhóm BIG-DT-HK241
 
 ## setup project
-1. 
-2. install java11
+1. install java11
 2. install maven, install mysql
 3. mvn clean install
 4. mvn jetty:run
