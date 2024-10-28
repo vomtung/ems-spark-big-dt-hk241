@@ -1,5 +1,7 @@
 package com.bigdatahk241.service;
 
+import com.bigdatahk241.dto.BaseDto;
+import com.bigdatahk241.dto.ConsumedEnergyYearDto;
 import org.apache.spark.SparkConf;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
@@ -8,6 +10,9 @@ import org.apache.spark.sql.functions;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import scala.Tuple2;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * EMSAggYearService
@@ -18,16 +23,16 @@ import scala.Tuple2;
 public class EMSAggYearService {
 
 
-    public static void consumedEnergyByYear() {
+    public static List<ConsumedEnergyYearDto> consumedEnergyByYear() {
         SparkSession spark = SparkSession.builder()
-                .appName("Salary By Year")
+                .appName("Energy Consumption By Year")
                 .master("local")
                 .getOrCreate();
 
-        String jdbcUrl = "jdbc:mysql://localhost:3306/your_database";
-        String table = "employees";
-        String user = "your_username";
-        String password = "your_password";
+        String jdbcUrl = "jdbc:mysql://localhost:3306/big_dt_hk241";
+        String table = "ems_master";
+        String user = "root";
+        String password = "123456";
 
         // Đọc dữ liệu từ MySQL
         Dataset<Row> df = spark.read()
@@ -40,10 +45,10 @@ public class EMSAggYearService {
                 .load();
 
         // Thêm cột `year` chỉ chứa phần năm từ cột `DATETIME`
-        Dataset<Row> yearDf = df.withColumn("year", functions.year(df.col("year_column")));
+        Dataset<Row> yearDf = df.withColumn("year", functions.year(df.col("DATE_CREATED")));
 
         // Chuyển đổi dữ liệu sang RDD<Tuple2<Integer, Double>>: (year, salary)
-        JavaRDD<Tuple2<Integer, Double>> yearSalaryRDD = yearDf.select("year", "salary")
+        JavaRDD<Tuple2<Integer, Double>> yearSalaryRDD = yearDf.select("year", "ENERGY_CONSUMPTION")
                 .javaRDD()
                 .map(row -> new Tuple2<>(row.getInt(0), row.getDouble(1)));
 
@@ -53,10 +58,15 @@ public class EMSAggYearService {
                 .reduceByKey(Double::sum);
 
         // Hiển thị kết quả
-        totalSalaryByYear.collect().forEach(tuple ->
-                System.out.println("Year: " + tuple._1 + ", Total Salary: " + tuple._2));
+        List<ConsumedEnergyYearDto> consumedEnergyYearDtos = new ArrayList<>();
+        totalSalaryByYear.collect().forEach(tuple -> {
+            ConsumedEnergyYearDto dto = new ConsumedEnergyYearDto(tuple._1, tuple._2);
+            consumedEnergyYearDtos.add(dto);
+        });
 
         spark.stop();
+
+        return consumedEnergyYearDtos;
     }
 
     public static void main(String[] args) {
