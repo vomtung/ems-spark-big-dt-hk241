@@ -6,7 +6,7 @@
 3. mvn clean install
 4. mvn jetty:run
 
-go to 
+user can access application via link
 [http://localhost:8080/ems/](http://localhost:8080/ems/)
 [http://localhost:8080/ems/index.jsp](http://localhost:8080/ems/index.jsp)
 
@@ -14,12 +14,12 @@ go to
 
 table ems_master
 
-| Column      | Column                                 | Column              | 
-|-------------|----------------------------------------|---------------------|
-| DEVICE_ID   | DEVICE_NAME                            | ENERGY_CONSUMPTION  |
-| ----------- | --------------                         | ------------------- |
-| INT         | VARCHAR(5000)                          | DECIMAL             | 
-|-------------| -------------------------------------- |---------------------|
+| Column      | Column                                 | Column              | conlumn          |
+|-------------|----------------------------------------|---------------------|------------------|
+| DEVICE_ID   | DEVICE_NAME                            | ENERGY_CONSUMPTION  | DATE_MODIFIED    |
+| ----------- | --------------                         | ------------------- | ---------------- |
+| INT         | VARCHAR(5000)                          | DECIMAL             | DATETIME         |
+|-------------| -------------------------------------- |---------------------|------------------|
 
 
 
