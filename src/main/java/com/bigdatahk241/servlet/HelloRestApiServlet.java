@@ -12,7 +12,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-
+/**
+ * HelloRestApiServlet
+ *
+ * @author vmtung.sdh231@hcmut.edu.vn, vomtung@gmail.com
+ * @since 28.Otc.2024
+ */
 public class HelloRestApiServlet extends HttpServlet {
 
     @Override
