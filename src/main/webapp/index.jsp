@@ -43,7 +43,7 @@
 </head>
 <body>
 <canvas id="myPieChart" width="400" height="400"></canvas>
-<canvas id="myBarChart" width="600" height="600"></canvas>
+<canvas id="myBarChart" width="500" height="500"></canvas>
 <script>
 
 
