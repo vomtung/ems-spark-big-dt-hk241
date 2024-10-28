@@ -1,5 +1,6 @@
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <h2>Energy Management System</h2>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -41,43 +42,108 @@
 
 </head>
 <body>
-<canvas id="myChart"></canvas>
+<canvas id="myPieChart" width="400" height="400"></canvas>
+<canvas id="myBarChart" width="600" height="600"></canvas>
 <script>
-  const ctx = document.getElementById('myChart').getContext('2d');
-  const myChart = new Chart(ctx, {
-      type: 'bar', // loại biểu đồ
-      data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-          datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
-              backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
-              ],
-              borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)'
-              ],
-              borderWidth: 1
-          }]
-      },
-      options: {
-          scales: {
-              y: {
-                  beginAtZero: true
-              }
-          }
-      }
-  });
+
+
+    async function fetchData() {
+                const response = await fetch('http://localhost:8080/ems/energy-consumption-year'); // Thay thế bằng URL API của bạn
+                const data = await response.json();
+                return data;
+            }
+    const colors = ['#ef9a9a',
+            '#e1bee7',
+            '#e91e63',
+            '#ec407a',
+            '#f44336',
+            'red',
+            'blue',
+            'green',
+            'orange',
+            'purple',
+            'yellow',
+            '#f06292'];
+            // Hàm để vẽ biểu đồ
+    async function renderChart() {
+                const apiData = await fetchData();
+
+                // Giả sử apiData là một mảng các đối tượng với các thuộc tính "label" và "value"
+                const labels = apiData.map(item => item.year); // Lấy nhãn từ dữ liệu API
+                const values = apiData.map(item => item.energyConsumption); // Lấy giá trị từ dữ liệu API
+
+                const data = {
+                                labels: labels,
+                                datasets: [{
+                                    label: 'Energy consumption',
+                                    data: values,
+                                    fill: false,
+                                    borderColor: '#FFFFFF',
+                                    backgroundColor: colors.slice(0, values.length),
+                                    tension: 0.1
+                                }]
+                            };
+                            const options = {
+                                            responsive: false,
+                                            plugins: {
+                                                legend: {
+                                                    labels: {
+                                                        color: 'black'
+                                                    }
+                                                },
+                                                tooltip: {
+                                                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                                                    titleColor: 'white',
+                                                    bodyColor: 'white'
+                                                }
+                                            },
+                                            scales: {
+                                                x: {
+                                                    ticks: {
+                                                        color: 'black'
+                                                    }
+                                                },
+                                                y: {
+                                                    ticks: {
+                                                        color: 'black'
+                                                    }
+                                                }
+                                            }
+                                        };
+
+                const pieconfig = {
+                                type: 'pie', // Loại biểu đồ
+                                data: data,
+                                options
+
+                            };
+                 const barconfig = {
+                                 type: 'bar', // Loại biểu đồ
+                                 data: data,
+                                 options: {
+                                     responsive: false,
+                                     plugins: {
+                                         legend: {
+                                             display: true,
+                                         },
+                                     },
+                                     scales: {
+                                         x: {
+                                             beginAtZero: true,
+                                         },
+                                         y: {
+                                             beginAtZero: true,
+                                         }
+                                     }
+                                 },
+                             };
+
+
+  const myPieChart =  new Chart(document.getElementById('myPieChart'),pieconfig);
+  const myBarChart =  new Chart(document.getElementById('myBarChart'),barconfig);
+
+  }
+  window.onload = renderChart;
 </script>
 </body>
 </html>
