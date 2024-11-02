@@ -12,13 +12,14 @@ user can access application via link
 
 ## table structure
 schema big_dt_hk241
+
 table ems_master
 
-| Column      | Column                                 | Column                | conlumn            |
-|-------------|----------------------------------------|-----------------------|--------------------|
-| DEVICE_ID   | DEVICE_NAME                            | ENERGY_CONSUMPTION    | DATE_CREATED       |
-| ----------- | --------------                         | -------------------   | ----------------   |
-| INT         | VARCHAR(5000)                          | DOUBLE                | DATETIME           |
+| Column      | Column                                 | Column                | column            |
+|-------------|----------------------------------------|-----------------------|-------------------|
+| DEVICE_ID   | DEVICE_NAME                            | ENERGY_CONSUMPTION    | DATE_CREATED      |
+| ----------- | --------------                         | -------------------   | ----------------  |
+| INT         | VARCHAR(5000)                          | DOUBLE                | DATETIME          |
 |-------------| -------------------------------------- | --------------------- | ------------------ |
 
 
