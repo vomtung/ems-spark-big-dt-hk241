@@ -11,7 +11,7 @@ user can access application via link
 [http://localhost:8080/ems/index.jsp](http://localhost:8080/ems/index.jsp)
 
 ## table structure
-
+schema big_dt_hk241
 table ems_master
 
 | Column      | Column                                 | Column                | conlumn            |
