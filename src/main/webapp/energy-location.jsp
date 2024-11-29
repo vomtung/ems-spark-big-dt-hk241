@@ -22,10 +22,10 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="<%= baseURL %>/energy-month.jsp">Energy Consumption By Month</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="<%= baseURL %>/energy-location.jsp">Energy Consumption By Location</a>
       </li>
 
@@ -38,13 +38,13 @@
 
 </head>
 <body>
-<canvas id="myPieChart" width="400" height="400"></canvas>
-<canvas id="myBarChart" width="500" height="500"></canvas>
+<canvas id="myPieChart" width="400" height="400" style="margin: auto;"></canvas>
+<canvas id="myBarChart" width="500" height="500" style="margin: auto;"></canvas>
 <script>
 
 
     async function fetchData() {
-                const response = await fetch('http://localhost:8080/ems/energy-consumption-year'); // Thay thế bằng URL API của bạn
+                const response = await fetch('http://localhost:8080/ems/energy-consumption-location'); // Thay thế bằng URL API của bạn
                 const data = await response.json();
                 return data;
             }
@@ -65,7 +65,7 @@
                 const apiData = await fetchData();
 
                 // Giả sử apiData là một mảng các đối tượng với các thuộc tính "label" và "value"
-                const labels = apiData.map(item => item.year); // Lấy nhãn từ dữ liệu API
+                const labels = apiData.map(item => item.location); // Lấy nhãn từ dữ liệu API
                 const values = apiData.map(item => item.energyConsumption); // Lấy giá trị từ dữ liệu API
 
                 const data = {
