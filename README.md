@@ -23,6 +23,10 @@ table ems_master
 |-------------| -------------------------------------- | --------------------- | ------------------ |
 
 
+Table structure
 
 ![Example Image](images/table_structure.png)
 
+Data sample
+
+![Example Image](images/ems_master_data_sample.png)
