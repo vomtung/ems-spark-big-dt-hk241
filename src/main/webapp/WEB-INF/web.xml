@@ -15,6 +15,10 @@
         <servlet-name>EnergyYearConsumptionYearApiServlet</servlet-name>
         <servlet-class>com.bigdatahk241.servlet.EnergyYearConsumptionYearApiServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EnergyMonthConsumptionApiServlet</servlet-name>
+        <servlet-class>com.bigdatahk241.servlet.EnergyMonthConsumptionApiServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
       <servlet-name>HelloRestApiServlet</servlet-name>
       <url-pattern>/hello-rest</url-pattern>
@@ -22,6 +26,10 @@
     <servlet-mapping>
         <servlet-name>EnergyYearConsumptionYearApiServlet</servlet-name>
         <url-pattern>/energy-consumption-year</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EnergyMonthConsumptionApiServlet</servlet-name>
+        <url-pattern>/energy-consumption-month</url-pattern>
     </servlet-mapping>
 </web-app>
 

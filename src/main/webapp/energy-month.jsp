@@ -38,13 +38,23 @@
 
 </head>
 <body>
-<canvas id="myPieChart" width="400" height="400"></canvas>
-<canvas id="myBarChart" width="500" height="500"></canvas>
+ <label for="cars">Choose a year:</label>
+
+<select name="cars" id="cars">
+  <option value="2024">2024</option>
+  <option value="2023">2023</option>
+  <option value="2022">2022</option>
+  <option value="2021">2021</option>
+   <option value="2020">2020</option>
+</select>
+
+<canvas id="myPieChart" width="400" height="400" style="margin: auto;"></canvas>
+<canvas id="myBarChart" width="500" height="500" style="margin: auto;"></canvas>
 <script>
 
 
     async function fetchData() {
-                const response = await fetch('http://localhost:8080/ems/energy-consumption-year'); // Thay thế bằng URL API của bạn
+                const response = await fetch('http://localhost:8080/ems/energy-consumption-month'); // Thay thế bằng URL API của bạn
                 const data = await response.json();
                 return data;
             }
@@ -65,7 +75,7 @@
                 const apiData = await fetchData();
 
                 // Giả sử apiData là một mảng các đối tượng với các thuộc tính "label" và "value"
-                const labels = apiData.map(item => item.year); // Lấy nhãn từ dữ liệu API
+                const labels = apiData.map(item => item.month); // Lấy nhãn từ dữ liệu API
                 const values = apiData.map(item => item.energyConsumption); // Lấy giá trị từ dữ liệu API
 
                 const data = {
