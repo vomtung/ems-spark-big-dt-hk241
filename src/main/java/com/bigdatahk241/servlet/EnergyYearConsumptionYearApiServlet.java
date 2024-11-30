@@ -3,9 +3,8 @@ package com.bigdatahk241.servlet;
 
 
 
-import com.bigdatahk241.dto.BaseDto;
 import com.bigdatahk241.dto.ConsumedEnergyYearDto;
-import com.bigdatahk241.service.EMSAggYearService;
+import com.bigdatahk241.service.EMSAggYearFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -27,7 +26,7 @@ public class EnergyYearConsumptionYearApiServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json");
 
-        List<ConsumedEnergyYearDto> dto =  EMSAggYearService.consumedEnergyByYear();
+        List<ConsumedEnergyYearDto> dto =  EMSAggYearFactory.consumedEnergyByYear();
 
         ObjectMapper mapper = new ObjectMapper();
         String result =  mapper.writeValueAsString(dto);
