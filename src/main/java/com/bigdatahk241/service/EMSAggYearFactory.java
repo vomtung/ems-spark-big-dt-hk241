@@ -1,6 +1,5 @@
 package com.bigdatahk241.service;
 
-import com.bigdatahk241.dto.BaseDto;
 import com.bigdatahk241.dto.ConsumedEnergyYearDto;
 import org.apache.spark.SparkConf;
 import org.apache.spark.sql.Dataset;
@@ -20,7 +19,7 @@ import java.util.List;
  * @author vmtung.sdh231@hcmut.edu.vn, vomtung@gmail.com
  * @since 28.Otc.2024
  */
-public class EMSAggYearService {
+public class EMSAggYearFactory {
 
 
     public static List<ConsumedEnergyYearDto> consumedEnergyByYear() {
