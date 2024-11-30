@@ -4,40 +4,30 @@ package com.bigdatahk241.dto;
 import java.io.Serializable;
 
 /**
- * ConsumedEnergyYearDto
+ * ConsumedEnergyMonthDto
  *
  * @author vmtung.sdh231@hcmut.edu.vn, vomtung@gmail.com
- * @since 28.Otc.2024
+ * @since 30.Nov.2024
  */
 
 public class ConsumedEnergyMonthDto implements Serializable {
 
-    private Integer monthNo;
-    private String month;
+    private Integer month;
     private Double energyConsumption;
 
     public ConsumedEnergyMonthDto() {
     }
 
-    public ConsumedEnergyMonthDto(Integer monthNo, String month, Double energyConsumption) {
-        this.monthNo = monthNo;
+    public ConsumedEnergyMonthDto(Integer month,Double energyConsumption) {
         this.month = month;
         this.energyConsumption = energyConsumption;
     }
 
-    public Integer getMonthNo() {
-        return monthNo;
-    }
-
-    public void setMonthNo(Integer monthNo) {
-        this.monthNo = monthNo;
-    }
-
-    public String getMonth() {
+    public Integer getMonth() {
         return month;
     }
 
-    public void setMonth(String month) {
+    public void setMonth(Integer month) {
         this.month = month;
     }
 
